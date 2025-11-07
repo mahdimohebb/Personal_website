@@ -1,0 +1,431 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>{{ seo_title }}</title>
+    <meta name="title" content="{{ seo_title }}">
+    <meta name="description" content="{{ seo_description }}">
+    <meta name="keywords" content="{{ seo_keywords }}">
+    <meta name="author" content="مهدی محبی">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Persian">
+    <meta name="revisit-after" content="7 days">
+    <link rel="canonical" href="https://mohebbimahdi.ir/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://mohebbimahdi.ir/">
+    <meta property="og:title" content="{{ seo_title }}">
+    <meta property="og:description" content="{{ seo_description }}">
+    <meta property="og:image" content="https://mohebbimahdi.ir{% static 'Mahdi.jpg' %}">
+    <meta property="og:locale" content="fa_IR">
+    <meta property="og:site_name" content="مهدی محبی">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://mohebbimahdi.ir/">
+    <meta property="twitter:title" content="{{ seo_title }}">
+    <meta property="twitter:description" content="{{ seo_description }}">
+    <meta property="twitter:image" content="https://mohebbimahdi.ir{% static 'Mahdi.jpg' %}">
+    
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "مهدی محبی",
+      "jobTitle": "برنامه‌نویس وب و متخصص تبلیغات دیجیتال",
+      "url": "https://mohebbimahdi.ir",
+      "image": "https://mohebbimahdi.ir{% static 'Mahdi.jpg' %}",
+      "email": "mahdimohebbi3016@gmail.com",
+      "sameAs": [
+        "https://t.me/mahdi_mohebbi1385",
+        "https://www.instagram.com/mahdi_mohebbi2006/",
+        "https://github.com/mahdi_mohebbi1385",
+        "https://www.linkedin.com/in/mahdi-mohebbi"
+      ],
+      "knowsAbout": [
+        "Django",
+        "Python",
+        "Web Development",
+        "Web Design",
+        "Telegram Bot Development"
+      ],
+      "description": "برنامه‌نویس حرفه‌ای وب و متخصص تبلیغات دیجیتال با بیش از ۵ سال تجربه"
+    }
+    </script>
+    
+    <link rel="stylesheet" href="{% static 'bootstrap.rtl.min.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body class="d-flex flex-column">
+    <header class="d-flex justify-content-between px-5 pt-3">
+        <div class="logo-name">
+            <h5 class="d-md-block d-none">
+                مهدی محبی
+            </h5>
+        </div>
+        <div class="pages-items">
+            <nav>
+                <ul class="list-unstyled d-flex row row-cols-4 g-5 d-md-flex d-none">
+                    <li><a class="nav-link active" href="#Me">درباره من</a></li>
+                    <li><a class="nav-link" href="#Skills">مهارت ها</a></li>
+                    <li><a class="nav-link" href="#Works">نمونه کار</a></li>
+                    <li class="text-nowrap"><a class="nav-link" href="#Contact_me">ارتباط با من</a></li>
+                </ul>
+                <!-- Hamburger menu for mobile -->
+                <button class="hamburger-menu d-md-none" type="button" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </nav>
+        </div>
+
+    </header>
+    <!-- Mobile menu overlay -->
+    <div class="mobile-menu-overlay d-md-none"></div>
+    <!-- Mobile menu -->
+    <div class="mobile-menu d-md-none">
+        <nav class="mobile-nav">
+            <ul class="list-unstyled">
+                <li><a class="nav-link mobile-nav-link active" href="#Me">درباره من</a></li>
+                <li><a class="nav-link mobile-nav-link" href="#Skills">مهارت ها</a></li>
+                <li><a class="nav-link mobile-nav-link" href="#Works">نمونه کار</a></li>
+                <li><a class="nav-link mobile-nav-link" href="#Contact_me">ارتباط با من</a></li>
+            </ul>
+        </nav>
+    </div>
+    <section class="base-section pt-4 px-lg-5 px-3 d-inline-flex justify-content-center align-items-center">
+        <main class="mb-3">
+
+            <!-- about me -->
+            <section id="Me" class="d-flex flex-column-reverse flex-lg-row ">
+
+                <!-- about text -->
+                <div class="d-flex flex-column justify-content-around text-center px-lg-5">
+                    <div>
+                        <h1 class="fw-bold name mt-4">مهدی محبی</h1>
+                        <h3 id="skill-text" class="skill-text mb-3"></h3>
+                    </div>
+                    <div class="pt-2">
+                        {% if introduction %}
+                            <p class="about-me-text fs-4">{{ introduction.content }}</p>
+                        {% else %}
+                            <p class="about-me-text fs-4">برنامه‌نویس حرفه‌ای وب و متخصص تبلیغات دیجیتال
+                                با بیش از ۵ سال تجربه در حوزه‌ی برنامه‌نویسی و تبلیغات، از سن ۱۳ سالگی وارد دنیای برنامه
+                                نویسی شدم و از آن زمان تاکنون، پروژه‌های متعدد و متنوعی را با موفقیت به سرانجام رسانده‌ام.</p>
+                        {% endif %}
+                        
+                            <a href="#Contact_me" class="btn go-to-see mt-4">ثبت پروژه</a>
+                        </div>
+                        
+                    </div>
+                    
+                    <!-- image -->
+                <div class="img-box d-xxl-flex align-items-center text-center w-100">
+                    <div class="anim-border">
+                        <img class="w-sm-100" src="{% static 'Mahdi.jpg' %}" alt="عکس مهدی محبی - برنامه‌نویس وب">
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- Skills -->
+            <section id="Skills" class="d-flex flex-column active">
+
+                <div class="top-text-img d-flex justify-content-between align-items-center">
+                    <h2>مهارت های من</h2>
+                    <div>
+        
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="wow fadeInUp animated" style="visibility:visible" data-aos="fade-down">
+                        <div class="skill_item_inner">
+
+                            <div class="skill my-4 my-lg-0">
+                                <h5> طراحی وبسایت ( Web design )</h5>
+                                <div class="progress" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                    <div id="skill_webdesign" class="progress-bar " style="--w:99%">99%</div>
+                                </div>
+                            </div>
+                            <div class="row row-cols-lg-2 my-lg-5">
+                                <div class="skill my-4 my-lg-0">
+                                    <h5>CSS3</h5>
+                                    <div class="progress" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                                        <div id="skill_python" class="progress-bar" style="--w:90%">90%</div>
+                                    </div>
+                                </div>
+                                <div class="skill my-4 my-lg-0">
+                                    <h5>HTML5</h5>
+                                    <div class="progress" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                                        <div id="skill_python" class="progress-bar" style="--w:90%">90%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-cols-lg-2 my-lg-5">
+                                <div class="skill my-4 my-lg-0">
+                                    <h5>JavaScript</h5>
+                                    <div class="progress" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+                                        <div id="skill_python" class="progress-bar" style="--w:65%">65%</div>
+                                    </div>
+                                </div>
+                                <div class="skill my-4 my-lg-0">
+                                    <h5>Bootstrap</h5>
+                                    <div class="progress" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                                        <div id="skill_frontend" class="progress-bar" style="--w:90%">90%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-cols-lg-2 my-lg-5">
+                                <div class="skill my-4 my-lg-0">
+                                    <h5>Django</h5>
+                                    <div class="progress" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                                        <div id="skill_python" class="progress-bar" style="--w:90%">90%</div>
+                                    </div>
+                                </div>
+                                <div class="skill my-4 my-lg-0">
+                                    <h5>Web crawling</h5>
+                                    <div class="progress" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
+                                        <div id="skill_djangobackend" class="progress-bar" style="--w:80%">80%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-cols-lg-2 my-lg-5">
+                                <div class="skill my-4 my-lg-0">
+                                    <h5> طراحی ربات تلگرامی</h5>
+                                    <div class="progress" aria-valuenow="99" aria-valuemin="0" aria-valuemax="99">
+                                        <div id="skill_telegrambotdev" class="progress-bar" style="--w:99%">99%</div>
+                                    </div>
+                                </div>
+                                <div class="skill my-4 my-lg-0">
+                                    <h5> پایتون ( Python )</h5>
+                                    <div class="progress" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100">
+                                        <div id="skill_python" class="progress-bar" style="--w:99%">97%</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="skill my-4 my-lg-0">
+                                <h5> سرعت عمل ( Speed )</h5>
+                                <div class="progress" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
+                                    <div id="skill_webdesign" class="progress-bar "
+                                        style="--w:100%;background:#EE2400;">100%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- porjects -->
+            <section id="Works" class="d-flex flex-column ">
+
+                <div class="top-text-img d-flex justify-content-between align-items-center">
+                    <h2>نمونه کار های من</h2>
+                    <div>
+                      
+                    </div>
+                </div>
+
+                <div class="row mt-5 d-flex justify-content-center">
+                    {% for work in works %}
+                    <div class="col-auto work">
+                        <div>
+                            <div class="anim-border d-inline-block">
+                                <div class="card text-center">
+                                    <img class="card-img-top" src="{{work.image.url}}" alt="{{work.title}} - نمونه کار مهدی محبی" />
+                                    <div class="card-body">
+                                        <h4 class="card-title">{{work.title}}</h4>
+                                        <p class="card-text">{{work.about}}</p>
+                                        {% if work.url %}
+                                            <a href="{{work.url}}" target="_blank" rel="noopener noreferrer" class="btn go-to-see">مشاهده</a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!--
+                    <div class="col-auto work">
+                        <div>
+                            <div class="anim-border d-inline-block">
+                                <div class="card text-center">
+                                    <img class="card-img-top" src="demo-1-pc.png" alt="Title" />
+                                    <div class="card-body">
+                                        <h4 class="card-title">سایت فروشگاهی</h4>
+                                        <p class="card-text">سایت فروشگاهی با بک اند جنگو و قابل اتصال با انواع ربات های تلگرامی</p>
+                                        <a href="#" class="btn go-to-see">مشاهده</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+
+
+                </div>
+            </section>
+
+            <!-- contact me -->
+            <section id="Contact_me" class="d-flex flex-column">
+
+                <div class="top-text-img text-center social-platform">
+                    <h2>ارتباط با من</h2>
+                    <a style="--clr:#006c86" href="https://t.me/mahdi_mohebbi1385" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-telegram"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906q-1.168.486-4.666 2.01-.567.225-.595.442c-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294q.39.01.868-.32 3.269-2.206 3.374-2.23c.05-.012.12-.026.166.016s.042.12.037.141c-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8 8 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629q.14.092.27.187c.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.4 1.4 0 0 0-.013-.315.34.34 0 0 0-.114-.217.53.53 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09" />
+                        </svg>
+                    </a>
+                    <a style="--clr:#b91c00" href="https://www.instagram.com/mahdi_mohebbi2006/" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-instagram" viewBox="0 0 16 16">
+                            <path
+                                d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334" />
+                        </svg>
+                    </a>
+                    <a style="--clr:#24292e" href="https://github.com/mahdi_mohebbi1385" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+                        </svg>
+                    </a>
+                    <a style="--clr:#0077b5" href="https://www.linkedin.com/in/mahdi-mohebbi" target="_blank" rel="noopener noreferrer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+                            <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+                        </svg>
+                    </a>
+
+                </div>
+                <div class="top-text-img text-center social-platform pt-4">
+                    ایمیل :<a href="mailto:mahdimohebbi3016@gmail.com">mahdimohebbi3016@gmail.com</a>
+                </div>
+                <div class="d-flex contact-box">
+                
+                    <form class="my-5 flex-fill" method="post" action="{% url 'main:newmsg' %}">
+                        {% csrf_token %}
+                        <div class="row g-lg-5 mb-lg-4">
+                            <div class="col-12 col-lg-6">
+                                <label for="{{ form.fullname.id_for_label }}" class="form-label">{{ form.fullname.label }}</label>
+                                <div class="input-border">
+                                    {{ form.fullname }}
+                                    {% if form.fullname.errors %}
+                                        <div class="text-danger small">{{ form.fullname.errors }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <label for="{{ form.phonenumber.id_for_label }}" class="form-label">{{ form.phonenumber.label }}</label>
+                                <div class="input-border">
+                                    {{ form.phonenumber }}
+                                    {% if form.phonenumber.errors %}
+                                        <div class="text-danger small">{{ form.phonenumber.errors }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-lg-5 mb-lg-4">
+                            <div class="col-12 col-lg-6">
+                                <label for="{{ form.email.id_for_label }}" class="form-label">{{ form.email.label }}</label>
+                                <div class="input-border">
+                                    {{ form.email }}
+                                    {% if form.email.errors %}
+                                        <div class="text-danger small">{{ form.email.errors }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6">
+                                <label for="{{ form.title.id_for_label }}" class="form-label">{{ form.title.label }}</label>
+                                <div class="input-border">
+                                    {{ form.title }}
+                                    {% if form.title.errors %}
+                                        <div class="text-danger small">{{ form.title.errors }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <label for="{{ form.message.id_for_label }}" class="form-label">{{ form.message.label }}</label>
+                                <div class="input-border">
+                                    {{ form.message }}
+                                    {% if form.message.errors %}
+                                        <div class="text-danger small">{{ form.message.errors }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="captcha-part d-flex flex-column w-100 mb-3 mb-lg-0">
+                            <label class="form-label">{{ form.captcha.label }}</label>
+                            <div class="d-flex align-items-center flex-wrap">
+
+                                <div class="captcha-image mb-2 mb-md-0 me-2">
+                                    {{ form.captcha }}
+                                    
+                                </div>
+                                <div class="input-border "><input class="form-control" type="text" name="captcha_1"></div>
+                                {% if form.captcha.errors %}
+                                    <div class="text-danger small w-100">{{ form.captcha.errors }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="row text-center">
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn btn-send mt-3 mt-lg-0">
+                                    ارسال
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+
+        </main>
+    </section>
+
+    {% if messages %}
+    {% for message in messages %}
+    <!-- Modal -->
+    <div class="modal fade" id="messageModal{{ forloop.counter }}" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-nice">
+                <div class="modal-header border-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="fs-4 modal-body d-flex justify-content-center align-items-center">
+                    {{ message }}
+                </div>
+                <div class="modal-footer d-flex justify-content-center align-items-center border-0">
+                    <button type="button" class="btn btn-ok msg-status-{{ message.tags }}" data-bs-dismiss="modal">بستن</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var myModal = new bootstrap.Modal(document.getElementById('messageModal{{ forloop.counter }}'));
+            myModal.show();
+        });
+    </script>
+    {% endfor %}
+    {% endif %}
+
+
+</body>
+<script src="{% static 'script.js' %}"></script>
+
+</html>

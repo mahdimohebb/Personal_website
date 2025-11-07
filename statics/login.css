@@ -1,0 +1,72 @@
+:root
+{
+    --header-bg:#1B1B1B !important;
+    --button-bg: #006200 !important;
+    --accent: #cdcdcd !important;
+}
+body
+{
+    padding: 0;
+    margin: 0;
+    background: url('bg.jpg') !important;
+    background-size: 150% 150% !important;
+}
+body::-webkit-scrollbar
+{
+    background-color: #3a3a3a;
+    width: 15px;
+}
+body::-webkit-scrollbar-thumb
+{
+    background: linear-gradient(0deg, #29820B, #008000);
+    border:solid #3a3a3a 4px;
+    border-radius: 50px;
+}
+#header
+{
+    background: none;
+}
+#container
+{
+    color: #fff;
+    background: rgba(255, 255, 255, 0.09) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+    backdrop-filter: blur(9px) !important;
+    -webkit-backdrop-filter: blur(9px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    padding: 25px !important;
+    overflow: hidden !important;
+}
+
+button.theme-toggle
+{
+    display: none;
+}
+
+input:not(input[type="submit"])
+{
+    outline: none !important;
+    background-color: #888888 !important;
+}
+
+.recaptcha-outer
+{
+    display: flex !important;
+    margin: 15px 0;
+}
+
+input[type="submit"]
+{
+    background: #006600;
+    padding: 15px 30px !important;
+    color: #fff !important;
+    padding: 10px 45px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    transition: 0.5s;
+}
+input[type="submit"]:hover
+{
+    background: #006b00;
+    box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px, rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+}
